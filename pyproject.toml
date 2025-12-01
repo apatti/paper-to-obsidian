@@ -1,0 +1,18 @@
+[project]
+name = "paperreader"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "arxiv>=2.3.1",
+    "dotenv>=0.9.9",
+    "google-genai>=1.52.0",
+    "mlx-lm>=0.28.3",
+    "mlx-vlm>=0.3.7",
+    "pymupdf4llm>=0.2.2",
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "tqdm>=4.67.1",
+    "wandb>=0.23.0",
+]
