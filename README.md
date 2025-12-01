@@ -1,6 +1,8 @@
 # Paper to Obsidian
 
-An AI-powered tool that transforms academic research papers into richly formatted Obsidian markdown notes with multi-perspective explanations. Uses fine-tuned language models to analyze papers through three different lenses, making complex research accessible at multiple comprehension levels.
+Turn dense research papers into beautiful, interconnected Obsidian notes locally on your Mac.
+
+Paper to Obsidian is an AI-powered tool that transforms academic research papers into richly formatted Obsidian markdown notes. It uses a local Mixture-of-Experts pipeline to analyze every section of a paper through three distinct lenses, making complex research accessible at multiple levels of comprehension—all running 100% offline on Apple Silicon.
 
 ## Features
 
@@ -58,7 +60,7 @@ This will:
 
 ## Output Example
 
-The tool generates markdown like this:
+Your Obsidian note will look like this:
 
 ```markdown
 # Paper Title
@@ -86,34 +88,24 @@ The tool generates markdown like this:
 ## Architecture
 
 ```
-PDF Input
-    |
-    v
-PDF Parsing (pymupdf4llm)
-    |
-    v
-Image Extraction & Captioning (Qwen2-VL-2B)
-    |
-    v
-Section Parsing
-    |
-    v
-Multi-Perspective Analysis
-    |-- ELI5 Adapter
-    |-- Intuitive Adapter
-    |-- Executive Adapter
-    |
-    v
-Obsidian Markdown Output
+graph TD
+    A[PDF Input] --> B[Layout Parsing\npymupdf4llm];
+    B --> C[Vision Pass\nQwen2-VL-2B];
+    C --> D{Matrix Analysis};
+    D -->|Load| E[Executive Adapter];
+    D -->|Load| F[Intuitive Adapter];
+    D -->|Load| G[ELI5 Adapter];
+    E & F & G --> H[Obsidian Vault];
+    H --> I[Graph Connections];
 ```
 
 ### Models Used
 
-| Component | Model | Size |
-|-----------|-------|------|
-| Base LLM | Llama 3.2 3B Instruct (4-bit) | ~2GB |
-| Vision | Qwen2-VL-2B Instruct (4-bit) | ~1.5GB |
-| Adapters | LoRA fine-tuned | ~8MB each |
+| Component | Model | Function | Size |
+|-----------|-------|------|------|
+| Base LLM | Llama 3.2 3B Instruct (4-bit) | The reasoning engine| ~2GB |
+| Vision | Qwen2-VL-2B Instruct (4-bit) | Image captioning | ~1.5GB |
+| Adapters | LoRA fine-tuned | The "Personas" | ~8MB each |
 
 ## Fine-Tuning
 
