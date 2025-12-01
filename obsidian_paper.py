@@ -6,9 +6,14 @@ import os
 import pathlib
 import sys
 import shutil
+from dotenv import load_dotenv
 from utils.vision import caption_images_in_markdown
 
-OBSIDIAN_VAULT_PATH = "/Users/ashwin.patti/Documents/apatti-work/Research/Papers"
+load_dotenv()
+
+OBSIDIAN_VAULT_PATH = os.environ.get("OBSIDIAN_VAULT_PATH")
+if not OBSIDIAN_VAULT_PATH:
+    raise EnvironmentError("OBSIDIAN_VAULT_PATH is not set in .env file")
 BASE_MODEL = "mlx-community/Llama-3.2-3B-Instruct-4bit"
 
 ADAPTERS = {
@@ -375,7 +380,7 @@ def main():
             f.write(f"\n## {header}\n")
             
             if header in header_visuals:
-                f.write("> [!ABSTRACT] - Visuals (Click to expand)\n")
+                f.write("> [!ABSTRACT]- Visuals (Click to expand)\n")
                 for vis in header_visuals[header]:
                     indented_vis = vis.replace("\n", "\n> ")
                     f.write(f"> {indented_vis}\n> \n")
