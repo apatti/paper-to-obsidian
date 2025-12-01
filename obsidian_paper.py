@@ -375,7 +375,7 @@ def main():
             f.write(f"\n## {header}\n")
             
             if header in header_visuals:
-                f.write("> [!{header}] - Visuals (Click to expand)\n")
+                f.write("> [!ABSTRACT] - Visuals (Click to expand)\n")
                 for vis in header_visuals[header]:
                     indented_vis = vis.replace("\n", "\n> ")
                     f.write(f"> {indented_vis}\n> \n")

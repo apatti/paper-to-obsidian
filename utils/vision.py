@@ -45,10 +45,10 @@ def caption_images_in_markdown(md_content, base_path):
         )
 
         # Generate Caption
-        output = generate(model, processor, formatted_prompt, [full_path], max_tokens=200, verbose=False)
+        output = generate(model, processor, formatted_prompt, [full_path], max_tokens=1000, verbose=False)
         
         # Extract text from GenerationResult object
-        caption_text = str(output).strip()
+        caption_text = output.text.strip().replace("\n", " ")
         
         # Inject Caption into Markdown
         # We turn: ![img](path)
