@@ -6,16 +6,16 @@ Paper to Obsidian is an AI-powered tool that transforms academic research papers
 
 ## Features
 
-- **Multi-Perspective Analysis**: Every section is explained through three AI personas:
+- **Multi-Perspective Analysis**: Multi-Perspective Analysis: Instead of one generic summary, every section is analyzed by three fine-tuned expert adapters:
   - **ELI5**: Simple, analogy-based explanations for beginners
   - **Intuitive**: First-principles engineering explanations (Feynman-style)
   - **Executive**: Business/utility-focused summaries for quick understanding
 
-- **Vision AI Captioning**: Automatically describes charts, diagrams, and figures using a vision-language model
+- **Vision AI Captioning**: Uses Qwen2-VL to "see" charts, diagrams, and figures, embedding AI captions directly into your notes so the text model understands the visuals.
 
-- **Obsidian Integration**: Generates markdown with `[[wiki-links]]` for knowledge graph connectivity
+- **Knowledge Graph Builder**: Automatically extracts key concepts and wraps them in [[WikiLinks]], instantly connecting new papers to your existing Obsidian knowledge graph.
 
-- **Efficient Local Inference**: Runs entirely on Apple Silicon using MLX with quantized models
+- **Efficient Local Inference**: Optimized sequential loading allows running 3+ LLMs on a standard 16GB MacBook Pro M2 without crashing.
 
 ## Requirements
 
